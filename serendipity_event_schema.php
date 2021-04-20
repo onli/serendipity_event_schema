@@ -16,7 +16,7 @@ class serendipity_event_schema extends serendipity_event {
         $propbag->add('description',   PLUGIN_EVENT_SCHEMA_DESC);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Malte Paskuda');
-        $propbag->add('version',       '0.1.1');
+        $propbag->add('version',       '0.2');
         $propbag->add('requirements',  array(
             'serendipity' => '2.0'
         ));
@@ -125,6 +125,38 @@ class serendipity_event_schema extends serendipity_event {
                               ' . $publisher .' 
                             }
                             </script>';
+
+                        if (isset($eventData['properties']) && isset($eventData['properties']['ep_schemaType'])
+                                                            && isset($eventData['properties']['ep_schemaName'])
+                                                            && isset($eventData['properties']['ep_schemaBrandName'])
+                                                            && isset($eventData['properties']['ep_schemaRating'])
+                                                
+                        ) {
+                            $eventData['display_dat'] .= '<script type="application/ld+json">      
+                                      {"@context": "http://schema.org",
+                                    "@type": "' . $eventData['properties']['ep_schemaType'] . '",
+                                    "name": "' . $eventData['properties']['ep_schemaName'] . '",
+                                    ' . ($article_image ? "\"image\":  [ \"{$article_image}\" ]," : '') . '
+                                    "description": "",
+                                    "brand": {
+                                        "@type": "Thing",
+                                        "name": "' . $eventData['properties']['ep_schemaBrandName'] . '"
+                                    },
+                                    "review": {
+                                        "@type": "Review",
+                                        "author": {
+                                            "@type": "Person",
+                                            "name": "' . $eventData['author'] . '"
+                                        },
+                                        "datePublished": "' . date(DATE_ISO8601, $eventData['timestamp'] ) . '",
+                                        "reviewRating": {
+                                            "@type": "Rating",
+                                            "ratingValue": "' . $eventData['properties']['ep_schemaRating'] . '"
+                                        }
+                                    }
+                                }
+                                </script>'; 
+                        }
                     }
                     break;
 
