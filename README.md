@@ -24,7 +24,7 @@ schemaRating
 
 Then, when writing an article, fill those 4 fields in the entry editor with values. Fitting values are:
 
- * **schemaType**: `Product`, `Movie`
+ * **schemaType**: `Product`, `Movie` - possible more, but test it with the [rich result tester](https://search.google.com/test/rich-results)
  * **schemaName**: The thing you are writing about, e.g. *iPhone 42*.
  * **schemaBrandName**: The brand name of the producer, e.g. *Apple*
  * **schemaRating**: 0-5, e.g. *4.0*
