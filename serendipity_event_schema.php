@@ -16,7 +16,7 @@ class serendipity_event_schema extends serendipity_event {
         $propbag->add('description',   PLUGIN_EVENT_SCHEMA_DESC);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Malte Paskuda');
-        $propbag->add('version',       '0.2');
+        $propbag->add('version',       '0.2.1');
         $propbag->add('requirements',  array(
             'serendipity' => '2.0'
         ));
@@ -70,7 +70,7 @@ class serendipity_event_schema extends serendipity_event {
         if (isset($hooks[$event])) {
             switch($event) {
                 case 'frontend_display:html:per_entry':
-                    if ($serendipity['view'] == 'entry') {
+                    if ($serendipity['view'] ?? '' == 'entry') {
                         $article_image = $this->get_config('article_image', '');
                         if (isset($eventData['properties']) && isset($eventData['properties']['entry_image'])) {
                             // if entry_image is set, use this image instead (first priority)
