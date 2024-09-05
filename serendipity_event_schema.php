@@ -16,7 +16,7 @@ class serendipity_event_schema extends serendipity_event {
         $propbag->add('description',   PLUGIN_EVENT_SCHEMA_DESC);
         $propbag->add('stackable',     false);
         $propbag->add('author',        'Malte Paskuda');
-        $propbag->add('version',       '0.2.1');
+        $propbag->add('version',       '0.2.2');
         $propbag->add('requirements',  array(
             'serendipity' => '2.0'
         ));
@@ -135,7 +135,7 @@ class serendipity_event_schema extends serendipity_event {
                             $eventData['display_dat'] .= '<script type="application/ld+json">      
                                       {"@context": "http://schema.org",
                                     "@type": "' . $eventData['properties']['ep_schemaType'] . '",
-                                    "name": "' . $eventData['properties']['ep_schemaName'] . '",
+                                    "name": "' . htmlspecialchars($eventData['properties']['ep_schemaName']) . '",
                                     ' . ($article_image ? "\"image\":  [ \"{$article_image}\" ]," : '') . '
                                     "description": "",
                                     "brand": {
