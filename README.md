@@ -1,3 +1,6 @@
+> [!NOTE]
+> This plugin is [now](https://github.com/s9y/additional_plugins/pull/203) a part of Serendipity's spartacus repository, further development would happen over there.
+
 # serendipity_event_schema
 
 This plugin will automatically set the necessary schema.org markup to describe a blog article as blog article.
